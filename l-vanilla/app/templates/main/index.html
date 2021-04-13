@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% block meta %}
+{% endblock meta %}
+
+{% block link %}
+{% endblock link %}
+
+{% block script_upper %}
+{% endblock script_upper %}
+
+{% block title %}
+{{ super() }}
+{% endblock title %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock navbar %}
+
+{% block app_content %}
+<h1>Main Page /index</h1>
+<h1>Current user in g:</h1>
+<ul>
+  <li>username: </li>
+  <li>slug: </li>
+  <li>email: </li>
+  <li>role: </li>
+</ul>
+{% endblock app_content %}
+
+{% block script_lower %}
+{% endblock script_lower %}
