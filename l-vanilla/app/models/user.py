@@ -3,9 +3,6 @@
 from datetime import datetime
 from slugify import slugify
 
-from mongoengine import signals
-from mongoengine.errors import NotUniqueError
-
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.exts.database import db
 
@@ -20,7 +17,7 @@ class Role(db.Document):
 
     def __init__(self, *args, **values):
         super().__init__(*args, **values)
-        print('-- ROLE MODEL --')
+        # print('-- ROLE MODEL --')
 
     def __repr__(self) -> str:
         return f'<Role | name: {self.name}, description: {self.description}>'
@@ -46,7 +43,7 @@ class User(db.Document):
 
     def __init__(self, *args, **values):
         super().__init__(*args, **values)
-        print('-- USER MODEL --')
+        # print('-- USER MODEL --')
 
     def __repr__(self) -> str:
         return f'<User | username: {self.username}, email: {self.email}>'

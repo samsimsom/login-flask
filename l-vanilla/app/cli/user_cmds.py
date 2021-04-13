@@ -2,7 +2,7 @@
 
 import click
 
-from mongoengine.errors import NotUniqueError
+# from mongoengine.errors import NotUniqueError
 
 from app.cli import user_cli
 
@@ -30,20 +30,31 @@ def drop_colection():
 @click.argument('name')
 def add_role(name):
     """ Add New User Role """
-    r = Role()
-    r.set_name(name)
-    r.set_slug(name)
-    r.description = 'Default Description'
-    r.save()
-    print(r.__repr__())
-    del r
+    try:
+        r = Role()
+        r.set_name(name)
+        r.set_slug(name)
+        r.description = 'Default Description'
+        r.save()
+    except Exception as exp:
+        print(exp)
+    else:
+        print(r.__repr__())
+        del r
 
 
-@user_cli.cli.command('list-role')
-def list_role():
+@user_cli.cli.command('list-roles')
+def list_roles():
     """ List All Role """
     roles = Role.objects.all()
     print([role.name for role in roles])
+
+
+@user_cli.cli.command('list-users')
+def list_users():
+    """ List All Users """
+    users = User.objects.all()
+    print([user.username for user in users])
 
 
 @user_cli.cli.command('register-user')
@@ -53,14 +64,19 @@ def list_role():
 @click.argument('role')
 def register_user(username, email, password, role):
     """ Register New User """
-    u = User()
-    u.username = username
-    u.email = email
-    u.set_password(password)
-    u.role = Role.objects.get(name=role.upper())
-    u.save()
-    print(u.__repr__())
-    del u
+    try:
+        u = User()
+        u.username = username
+        u.email = email
+        u.set_password(password)
+        u.role = Role.objects.get(name=role.upper())
+        u.save()
+
+    except Exception as exp:
+        print(exp)
+    else:
+        print(u.__repr__())
+        del u
 
 
 @user_cli.cli.command('login-user')
