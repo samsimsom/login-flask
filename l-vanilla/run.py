@@ -9,4 +9,4 @@ app = create_app()
 
 @app.before_request
 def session_loader():
-    pass
+    session['user'] = 'samsimsom'

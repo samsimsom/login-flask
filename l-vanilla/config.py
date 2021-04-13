@@ -17,10 +17,12 @@ class Config(object):
     CSRF_ENABLED = True
     WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
 
-    SESSION_COOKIE_SECURE = True
-    SESSION_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SAMESITE = 'Lax'
+    # SESSION_COOKIE_NAME = 'sessions'
+    # SESSION_COOKIE_SECURE = True
+    # SESSION_COOKIE_HTTPONLY = True
+    # SESSION_COOKIE_SAMESITE = 'Lax'
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
+    # PERMANENT_SESSION_LIFETIME = timedelta(seconds=30)
 
     # Mongoengine
     MONGODB_DB = os.environ.get('MONGODB_DB')
