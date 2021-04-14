@@ -19,4 +19,5 @@ def app_context():
         'current_app': current_app,
         'g': iter(g)
     }
+
     print(template)
