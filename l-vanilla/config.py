@@ -17,19 +17,19 @@ class Config(object):
     CSRF_ENABLED = True
     WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY')
 
-    SESSION_COOKIE_NAME = 'session'
-    SESSION_COOKIE_SECURE = True
-    SESSION_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SAMESITE = 'Lax'
-    PERMANENT_SESSION_LIFETIME = timedelta(days=7)
-    # PERMANENT_SESSION_LIFETIME = timedelta(seconds=30)
-
     # Mongoengine
     MONGODB_DB = os.environ.get('MONGODB_DB')
     MONGODB_HOST = os.environ.get('MONGODB_HOST')
     MONGODB_PORT = int(os.environ.get('MONGODB_PORT'))
     MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
     MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
+
+    # Session
+    SESSION_COOKIE_NAME = 'session'
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    PERMANENT_SESSION_LIFETIME = timedelta(days=7)
 
 
 class ProductionConfig(Config):
