@@ -3,7 +3,7 @@
 import os
 from flask import Flask
 
-from app.exts.database import db, session_interface
+from app.exts.database import db
 from app.exts.csrf import csrf
 
 
@@ -12,7 +12,6 @@ def create_app():
 
     app = Flask(__name__)
     app.config.from_object(os.environ.get('APP_CONFIG'))
-    # app.session_interface = session_interface(db)
 
     db.init_app(app)
     csrf.init_app(app)

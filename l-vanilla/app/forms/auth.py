@@ -6,23 +6,31 @@ from wtforms import (StringField,
                      PasswordField,
                      BooleanField,
                      SubmitField)
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import (ValidationError,
                                 DataRequired,
                                 Email,
                                 EqualTo)
+
 from app.models.user import User
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+    # def validate_email(self, email):
+    #     try:
+    #         email = User.objects.get(email=email.data)
+    #     except User.DoesNotExist:
+    #         email = None
+
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(),
@@ -43,7 +51,7 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, email):
         try:
-            user = user = User.objects.get(email=email.data)
+            user = User.objects.get(email=email.data)
         except User.DoesNotExist:
             user = None
 

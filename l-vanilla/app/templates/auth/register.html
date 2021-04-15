@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block meta %}
+{% endblock meta %}
+
+{% block link %}
+{% endblock link %}
+
+{% block script_upper %}
+{% endblock script_upper %}
+
+{% block title %}
+{{ super() }}
+{% endblock title %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock navbar %}
+
+{% block app_content %}
+<h1>Register</h1>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <form method="POST">
+
+      {{ form.hidden_tag() }}
+
+      {{ form.username.label(class='form-label') }}
+      {{ form.username(class='form-control') }}
+
+      {{ form.email.label(class='form-label') }}
+      {{ form.email(class='form-control') }}
+
+      {{ form.password.label(class='form-label') }}
+      {{ form.password(class='form-control') }}
+
+      {{ form.confirm_password.label(class='form-label') }}
+      {{ form.confirm_password(class='form-control') }}
+
+      {{ form.submit(class='btn btn-dark mt-2') }}
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock app_content %}
+
+{% block script_lower %}
+{% endblock script_lower %}

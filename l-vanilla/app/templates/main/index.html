@@ -19,12 +19,8 @@
 
 {% block app_content %}
 <h1>Main Page /index</h1>
-<h1>Current user in g:</h1>
 <ul>
-  <li>username: </li>
-  <li>slug: </li>
-  <li>email: </li>
-  <li>role: </li>
+  <li>username: {{ current_user }}</li>
 </ul>
 {% endblock app_content %}
 
